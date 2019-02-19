@@ -1,3 +1,19 @@
 <div class="ui cards">
-    <app-streekbier *ngFor="let localBier of bieren" [streekbier]="localBier"></app-streekbier>
+    <div  *ngFor="let localBier of bieren">
+        <app-streekbier [streekbier]="localBier"></app-streekbier>
+    <div class="ui segment"  style="margin-top:2em; margin-bottom: 1em; margin-right: 4em; margin-left: 1em;">
+        <div class="ui two column very relaxed grid">
+        <div class="column">
+            <!--TODO: maak knop naar edit pagina-->
+            <p style="text-align:center">Wijzig</p>
+        </div>
+        <div class="column">
+            <!--TODO: maak knop + confirm-->
+            <a style="text-align:center" (click)="verwijder(localBier)">Verwijder</a>
+        </div>
+    </div>
+    <div class="ui vertical divider">
+      --
+  </div>
+</div>
 </div>

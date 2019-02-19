@@ -20,4 +20,10 @@ export class LijstStreekbierenComponent implements OnInit {
     )
   }
 
+  verwijder(localBier: Streekbier){
+    const index = this.bieren.indexOf(localBier)
+    if(index !== -1)
+      this.bieren.splice(index, 1)
+  }
+
 }
