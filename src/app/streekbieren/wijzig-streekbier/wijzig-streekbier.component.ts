@@ -48,16 +48,7 @@ export class WijzigStreekbierComponent implements OnInit {
       newBrouwer
     )
     this.dataService.wijzigStreekbier(this.teWijzigenStreekbier.naam ,changedBier)
-  }
-
-  wijzigBier(nieuweNaam: HTMLInputElement, nieuwPercentage: HTMLInputElement) {
-    let newBier = new Streekbier(nieuweNaam.value, parseInt(nieuwPercentage.value), this.teWijzigenStreekbier.brouwerij)
-    this.dataService.wijzigStreekbier(this.teWijzigenStreekbier.naam, newBier)
+    
     this.router.navigate(['streekbieren/lijst'])
   }
-
-  clicked(){
-    console.log("clicked")
-  }
-
 }
