@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Streekbier } from '../streekbier/streekbier.model';
 import { StreekbierDataService } from 'src/app/streekbieren/streekbier-data.service';
 
@@ -12,12 +12,19 @@ export class LijstStreekbierenComponent implements OnInit {
 
   bieren: Streekbier[] = []
 
+  @Output() public changeStreekbier = new EventEmitter<Streekbier>()
+
   constructor(private _dataService: StreekbierDataService) { }
 
   ngOnInit() {
     this._dataService.getStreekbieren().subscribe(
       bieren => this.bieren = bieren
     )
+  }
+
+  changeBier(localBier: Streekbier){
+    this.changeStreekbier.emit(localBier)
+    return false
   }
 
   verwijder(localBier: Streekbier){

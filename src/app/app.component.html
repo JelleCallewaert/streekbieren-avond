@@ -6,9 +6,12 @@
         <p class="datum">Vrijdag 22-02-2019</p>        
     </div>
     <div class="column">
-        <h1 class="cafe">Café X</h1>
+        <h1 class="cafe" (click)="changePage()">Café X</h1>
     </div>
 </div>
 <hr>
-
-<app-lijst-streekbieren></app-lijst-streekbieren>
+ <!--(someEventFromLijst)="changePage(selectedBier: Streekbier)"-->
+<app-lijst-streekbieren *ngIf='showlijst else editpage' (changeStreekbier)="changePage()"></app-lijst-streekbieren>
+<ng-template #editpage>
+    <app-wijzig-streekbier [streekbier]="streekbier"></app-wijzig-streekbier>
+</ng-template>
