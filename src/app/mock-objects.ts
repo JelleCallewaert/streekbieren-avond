@@ -9,7 +9,7 @@ var DATUMS: Date[]=[
     new Date('1901-09-18T00:00:00'),
     new Date('1859-04-11T00:00:00'),
 ]
-var BROUWERIJEN: Brouwerij[] = [
+export var BROUWERIJEN: Brouwerij[] = [
     new Brouwerij("Brouwerij Van der ginste","Bellegem",DATUMS[0]),
     new Brouwerij("Duvel Moortgat","Puurs",DATUMS[1]),
     new Brouwerij("Brouwerij uuuuh","Het land van geen idee",DATUMS[2]),

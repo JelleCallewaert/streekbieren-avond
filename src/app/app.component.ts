@@ -9,10 +9,4 @@ import { Brouwerij } from './streekbieren/brouwerij/brouwerij.model';
 })
 export class AppComponent {
   title = 'streekbieren-avond';
-  streekBier = new Streekbier("Tongerloo", 6, new Brouwerij("Tongerloo", "Tongerloo", new Date()))
-  showlijst = true
-
-  changePage(){
-    this.showlijst = !this.showlijst
-  }
 }

@@ -35,4 +35,10 @@ export class Streekbier {
         this._brouwerij = brouwerij
     }
 
+    editBier(naam: string, percentage: number, brouwerij: Brouwerij){
+        naam = naam
+        percentage = percentage
+        brouwerij = brouwerij
+    }
+
 }

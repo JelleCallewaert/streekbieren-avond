@@ -1,17 +1,34 @@
+<div class="ui container">
+    <div class="ui three item menu">
+        <a class="item" routerLinkActive="active" routerLink="/streekbieren/lijst">Streekbieren Avond</a>
+        <a class="item" routerLinkActive="active" routerLink="/evenementen">Vrijdag 22-02-2019</a>
+        <a class="item" routerLinkActive="active" routerLink="/home">Café X</a>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
+
+<!--
 <div class="ui three column very relaxed grid">
     <div class="column">
-        <h1 class="avond">Streekbieren Avond</h1>
+        <a routerLink="/streekbieren/lijst" routerLinkActive="active"><h1 class="avond">
+            Streekbieren Avond
+        </h1></a>
     </div>
     <div class="column">
         <p class="datum">Vrijdag 22-02-2019</p>        
     </div>
     <div class="column">
-        <h1 class="cafe" (click)="changePage()">Café X</h1>
+        <h1 class="cafe">Café X</h1>
     </div>
 </div>
 <hr>
+<router-outlet></router-outlet>
+-->
  <!--(someEventFromLijst)="changePage(selectedBier: Streekbier)"-->
-<app-lijst-streekbieren *ngIf='showlijst else editpage' (changeStreekbier)="changePage()"></app-lijst-streekbieren>
+ <!--
+<app-lijst-streekbieren *ngIf='showlijst else editpage' (changeStreekbier)="showEdit($event)"></app-lijst-streekbieren>
 <ng-template #editpage>
-    <app-wijzig-streekbier [streekbier]="streekbier"></app-wijzig-streekbier>
+    <app-wijzig-streekbier [streekbier]="streekBier"></app-wijzig-streekbier>
 </ng-template>
+-->

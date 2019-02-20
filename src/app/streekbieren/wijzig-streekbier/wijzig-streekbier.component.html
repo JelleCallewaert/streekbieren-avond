@@ -1,3 +1,68 @@
-<p>
-  wijzig-streekbier works!
-</p>
+<div class="ui container">
+  <form class="ui form" [formGroup]="streekbier" (ngSubmit)="onSubmit()">
+    <h1 class="ui center aligned header">Wijzig streekbier</h1>
+    <div class="field" #naam>
+      <label for="naam">Naam: </label>
+      <input type="text" name="naam" placeholder="Naam bier" formControlName='naam'>
+      <div *ngIf='(streekbier.get("naam").touched && streekbier.get("naam").errors?.required)' class="ui red message">
+        <!-- Hier errorboodschap indien geen naam wordt meegegeven.-->
+        <div class="header">Fout</div>
+        <p>Gelieve een naam in te geven</p>
+      </div>
+      <div *ngIf='(streekbier.get("naam").touched && streekbier.get("naam").errors?.minlength)' class="ui red message">
+        <!-- Hier errorboodschap indien naam te kort is.-->
+        <div class="header">Fout</div>
+        <p>Een naam moet minstens 3 karakters hebben.</p>
+      </div>
+      <br />
+    </div>
+    <div class="field" #percentage>
+      <label for="percentage">Percentage: </label>
+      <input type="number" step="0.1" placeholder="Alcohol percentage" formControlName='percentage'>
+      <div *ngIf='(streekbier.get("percentage").touched && streekbier.get("percentage").errors?.required)' class="ui red message">
+        <!-- Hier errorboodschap indien er geen percentage wordt meegegeven.-->
+        <div class="header">Fout</div>
+        <p>Gelieve een percentage in te geven.</p>
+      </div>
+      <div *ngIf='(streekbier.get("percentage").touched && streekbier.get("percentage").errors?.min)' class="ui red message">
+        <!-- Hier errorboodschap indien percentage negatief is.-->
+        <div class="header">Fout</div>
+        <p>Een percentage moet minstens 0.0 zijn.</p>
+      </div>
+      <div *ngIf='(streekbier.get("percentage").touched && streekbier.get("percentage").errors?.max)' class="ui red message">
+        <!-- Hier errorboodschap indien percentage te hoog is.-->
+        <div class="header">Fout</div>
+        <p>Een percentage mag maximum 75.0 zijn.</p>
+      </div>
+      <br />
+    </div>
+    <div class="field" #brouwerij>
+      <label for="brouwerij">Brouwerij: </label>
+      <select class="ui fluid search selection dropdown" name="brouwerij" formControlName="brouwerij">
+        <option disabled selected>-- Selecteer brouwerij --</option>
+        <option *ngFor='let brouwerij of alleBrouwerijen'>{{brouwerij.naam}}</option> 
+      </select>
+    </div>
+    <button type='submit' [disabled]="streekbier.invalid || streekbier.dirty === false"
+      class="ui big button" role="button" #submitButton>
+      Streekbier bewerken
+    </button>
+  </form>
+</div>
+
+<!--<div>
+  <input value="{{bier.naam}}" type="text" placeholder="Biernaam" #nieuwenaam/>
+</div>
+<div class="percent">
+<input value="{{bier.percentage}}" type="number" step="0.1" placeholder="Alcoholpercentage" #nieuwpercentage/>
+</div>
+<div>
+  <select id="brouwerijselect">
+    <option *ngFor='let brouwerij of alleBrouwerijen' [value]='brouwerij'>
+      <div>
+        {{brouwerij.naam}}
+      </div>
+    </option>
+  </select>
+</div>
+<button (click)="wijzigBier(nieuwenaam, nieuwpercentage)">Wijzig</button>-->

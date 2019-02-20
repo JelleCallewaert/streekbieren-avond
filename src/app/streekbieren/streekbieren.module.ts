@@ -4,15 +4,28 @@ import { StreekbierComponent } from './streekbier/streekbier.component';
 import { BrouwerijComponent } from './brouwerij/brouwerij.component';
 import { LijstStreekbierenComponent } from './lijst-streekbieren/lijst-streekbieren.component';
 import { WijzigStreekbierComponent } from './wijzig-streekbier/wijzig-streekbier.component';
+import { RouterModule, Routes } from '@angular/router';
+import { StreekbierDataService } from './streekbier-data.service';
+import { HttpClientModule } from "@angular/common/http";
+import { ReactiveFormsModule } from '@angular/forms';
+
+const appRoutes: Routes = [
+  { path: 'lijst', component: LijstStreekbierenComponent },
+  { path: 'wijzig', component: WijzigStreekbierComponent }
+]
 
 @NgModule({
   declarations: [
     StreekbierComponent, 
     BrouwerijComponent, 
-    LijstStreekbierenComponent, WijzigStreekbierComponent],
+    LijstStreekbierenComponent, 
+    WijzigStreekbierComponent],
   imports: [
-    CommonModule
+    HttpClientModule, 
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule.forChild(appRoutes)
   ],
-  exports: [LijstStreekbierenComponent, WijzigStreekbierComponent]
+  providers:[StreekbierDataService]
 })
 export class StreekbierenModule { }

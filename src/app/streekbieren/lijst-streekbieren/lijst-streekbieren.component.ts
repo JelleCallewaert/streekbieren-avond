@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Streekbier } from '../streekbier/streekbier.model';
 import { StreekbierDataService } from 'src/app/streekbieren/streekbier-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lijst-streekbieren',
@@ -14,7 +15,7 @@ export class LijstStreekbierenComponent implements OnInit {
 
   @Output() public changeStreekbier = new EventEmitter<Streekbier>()
 
-  constructor(private _dataService: StreekbierDataService) { }
+  constructor(private _dataService: StreekbierDataService, private router: Router) { }
 
   ngOnInit() {
     this._dataService.getStreekbieren().subscribe(
@@ -24,6 +25,8 @@ export class LijstStreekbierenComponent implements OnInit {
 
   changeBier(localBier: Streekbier){
     this.changeStreekbier.emit(localBier)
+
+    this.router.navigate(['streekbieren/wijzig'], {queryParams: {naam: localBier.naam}})
     return false
   }
 
