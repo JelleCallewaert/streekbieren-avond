@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Streekbier } from './streekbier.model';
 
+//Pretty dumb component
 @Component({
   selector: 'app-streekbier',
   templateUrl: './streekbier.component.html',

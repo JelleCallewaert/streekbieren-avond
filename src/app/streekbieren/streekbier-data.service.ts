@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Streekbier } from './streekbier/streekbier.model';
-import { STREEKBIEREN, BROUWERIJEN } from '../mock-objects';
 import { Brouwerij } from './brouwerij/brouwerij.model';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -13,13 +12,7 @@ export class StreekbierDataService {
 
   private readonly _url = '/api'
 
-  streekbieren: Streekbier[]
-  brouwerijen: Brouwerij[]
-
-  constructor(private http: HttpClient) {
-    this.brouwerijen = BROUWERIJEN
-    //this.streekbieren = STREEKBIEREN
-  }
+  constructor(private http: HttpClient) { }
 
   getStreekbieren(): Observable<Streekbier[]> {
     return this.http.get(`${this._url}/streekbieren`).pipe(

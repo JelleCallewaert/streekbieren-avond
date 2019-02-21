@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Streekbier } from './streekbieren/streekbier/streekbier.model';
-import { Brouwerij } from './streekbieren/brouwerij/brouwerij.model';
 
+//Dumb component I guess
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

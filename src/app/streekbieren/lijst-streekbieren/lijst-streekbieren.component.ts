@@ -4,6 +4,7 @@ import { StreekbierDataService } from 'src/app/streekbieren/streekbier-data.serv
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
+//Fairly smart component
 @Component({
   selector: 'app-lijst-streekbieren',
   templateUrl: './lijst-streekbieren.component.html',

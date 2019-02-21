@@ -3,9 +3,9 @@ import { Streekbier } from '../streekbier/streekbier.model';
 import { Brouwerij } from '../brouwerij/brouwerij.model';
 import { StreekbierDataService } from '../streekbier-data.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { BROUWERIJEN } from 'src/app/mock-objects';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+//Kind of smart component?
 @Component({
   selector: 'app-wijzig-streekbier',
   templateUrl: './wijzig-streekbier.component.html',
@@ -25,8 +25,7 @@ export class WijzigStreekbierComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    //lijst van alle brouwerijen ophalen uit mock-objects
-    this.alleBrouwerijen = BROUWERIJEN
+    this.dataService.getBrouwerijen().subscribe(brouwers => this.alleBrouwerijen = brouwers)
     let originalNaam = this.route.snapshot.paramMap.get('naam')
     this.dataService.getStreekbier(originalNaam).subscribe(bier => {
       this.teWijzigenStreekbier = bier
@@ -50,7 +49,6 @@ export class WijzigStreekbierComponent implements OnInit {
 
   onSubmit(){
     let newBrouwer: Brouwerij
-    let newBier: Streekbier
     this.dataService.getBrouwerij(this.streekbier.value.brouwerij).subscribe(brouwer => newBrouwer = brouwer)
     const changedBier = new Streekbier(
       this.streekbier.value.naam,
