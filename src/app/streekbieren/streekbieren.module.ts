@@ -6,12 +6,11 @@ import { LijstStreekbierenComponent } from './lijst-streekbieren/lijst-streekbie
 import { WijzigStreekbierComponent } from './wijzig-streekbier/wijzig-streekbier.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StreekbierDataService } from './streekbier-data.service';
-import { HttpClientModule } from "@angular/common/http";
 import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'lijst', component: LijstStreekbierenComponent },
-  { path: 'wijzig', component: WijzigStreekbierComponent }
+  { path: 'wijzig/:naam', component: WijzigStreekbierComponent }
 ]
 
 @NgModule({
@@ -21,7 +20,6 @@ const appRoutes: Routes = [
     LijstStreekbierenComponent, 
     WijzigStreekbierComponent],
   imports: [
-    HttpClientModule, 
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(appRoutes)

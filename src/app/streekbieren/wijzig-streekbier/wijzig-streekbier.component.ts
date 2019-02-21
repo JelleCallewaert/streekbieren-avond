@@ -27,14 +27,26 @@ export class WijzigStreekbierComponent implements OnInit {
   ngOnInit() {
     //lijst van alle brouwerijen ophalen uit mock-objects
     this.alleBrouwerijen = BROUWERIJEN
+    let originalNaam = this.route.snapshot.paramMap.get('naam')
+    //this.teWijzigenStreekbier = this.dataService.streekbieren.find(bier => bier.naam === originalNaam)
+
+    this.dataService.getStreekbier(originalNaam).subscribe(bier => {
+      this.teWijzigenStreekbier = bier
+      this.buildForm()
+    })
+
     //naam uit route halen en streekbier opzoeken in dataservice
-    this.route.queryParams.subscribe(params => {
+    /*this.route.queryParams.subscribe(params => {
       let originalNaam = params['naam']
       this.teWijzigenStreekbier = this.dataService.streekbieren.find(bier => bier.naam === originalNaam)
-    })
+    })*/
+    
+  }
+
+  buildForm() {
     this.streekbier = this.fb.group({
       naam: [this.teWijzigenStreekbier.naam, [Validators.required, Validators.minLength(3)]],
-      percentage: [this.teWijzigenStreekbier.percentage, [Validators.required, Validators.min(0), Validators.max(100)]],
+      percentage: [this.teWijzigenStreekbier.percentage, [Validators.required, Validators.min(0), Validators.max(75)]],
       brouwerij: [this.teWijzigenStreekbier.brouwerij.naam]
     })
   }

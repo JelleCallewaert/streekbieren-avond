@@ -3,9 +3,9 @@
         <app-streekbier [streekbier]="localBier"></app-streekbier>
         <div class="ui segment" style="margin-top:2em; margin-bottom: 1em; margin-right: 4em; margin-left: 1em;">
             <div class="ui two column very relaxed grid">
-                <div class="column">
+                <div style="text-align:center" class="column">
                     <!--TODO: maak knop naar edit pagina-->
-                    <a style="text-align:center" (click)="changeBier(localBier)">Wijzig</a>
+                    <a (click)="changeBier(localBier)">Wijzig</a>
                 </div>
                 <div class="column">
                     <!--TODO: maak knop + confirm-->

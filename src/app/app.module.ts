@@ -4,8 +4,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing/app-routing.module'
+import { HttpClientModule } from '@angular/common/http';
 
-import { StreekbierenModule } from './streekbieren/streekbieren.module';
 
 
 @NgModule({
@@ -14,7 +14,7 @@ import { StreekbierenModule } from './streekbieren/streekbieren.module';
   ],
   imports: [
     BrowserModule,
-    StreekbierenModule,
+    HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     AppRoutingModule

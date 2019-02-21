@@ -41,4 +41,13 @@ export class Streekbier {
         brouwerij = brouwerij
     }
 
+    static fromJSON(json: any): Streekbier {
+        const bier = new Streekbier(
+            json.naam,
+            json.percentage,
+            json.brouwerij//.map(Brouwerij.fromJSON)
+        )
+        return bier
+    }
+
 }

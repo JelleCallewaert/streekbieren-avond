@@ -26,14 +26,12 @@ export class LijstStreekbierenComponent implements OnInit {
   changeBier(localBier: Streekbier){
     this.changeStreekbier.emit(localBier)
 
-    this.router.navigate(['streekbieren/wijzig'], {queryParams: {naam: localBier.naam}})
+    this.router.navigate(['streekbieren/wijzig/', localBier.naam])
     return false
   }
 
   verwijder(localBier: Streekbier){
-    const index = this.bieren.indexOf(localBier)
-    if(index !== -1)
-      this.bieren.splice(index, 1)
+    this._dataService.verwijderStreekbier(localBier.naam)
   }
 
 }
