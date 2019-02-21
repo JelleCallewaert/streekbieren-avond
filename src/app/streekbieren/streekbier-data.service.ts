@@ -16,33 +16,40 @@ export class StreekbierDataService {
   streekbieren: Streekbier[]
   brouwerijen: Brouwerij[]
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
     this.brouwerijen = BROUWERIJEN
     //this.streekbieren = STREEKBIEREN
   }
 
   getStreekbieren(): Observable<Streekbier[]> {
     return this.http.get(`${this._url}/streekbieren`).pipe(
-      map((list: any[]) : Streekbier[] => 
+      map((list: any[]): Streekbier[] =>
         list.map(Streekbier.fromJSON)
       )
     )
   }
 
   getStreekbier(naam: string): Observable<Streekbier> {
-    return this.http.get(`${this._url}/streekbieren/${naam}`)
-    .pipe(map(Streekbier.fromJSON))
+    return this.http.get(`${this._url}/streekbieren/${naam}`).pipe(
+      map(Streekbier.fromJSON)
+    )
   }
 
-  getBrouwerijen(): Observable<Brouwerij[]>{
-    return of(this.brouwerijen)
+  getBrouwerijen(): Observable<Brouwerij[]> {
+    return this.http.get(`${this._url}/streekbieren/brouwerijen`).pipe(
+      map((list: any[]): Brouwerij[] =>
+        list.map(Brouwerij.fromJSON)
+      )
+    )
   }
 
   getBrouwerij(naam: string): Observable<Brouwerij> {
-    return of(this.brouwerijen.find(brouwer => brouwer.naam === naam))
+    return this.http.get(`${this._url}/streekbieren/brouwerijen/${naam}`).pipe(
+      map(Brouwerij.fromJSON)
+    )
   }
 
-  wijzigStreekbier(origineleNaam: string, newBier: Streekbier){
+  wijzigStreekbier(origineleNaam: string, newBier: Streekbier) {
     console.log(newBier)
     return this.http.put(`${this._url}/streekbieren/${origineleNaam}`, newBier)
   }
