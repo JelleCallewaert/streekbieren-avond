@@ -42,12 +42,25 @@ export class Streekbier {
     }
 
     static fromJSON(json: any): Streekbier {
+        const brouwerij = new Brouwerij(
+            json.brouwerij.naam,
+            json.brouwerij.locatie,
+            json.brouwerij.datumOpgericht
+            )
         const bier = new Streekbier(
             json.naam,
             json.percentage,
-            json.brouwerij//.map(Brouwerij.fromJSON)
+            brouwerij
         )
         return bier
+    }
+
+    toJSON(){
+        return {
+            naam: this._naam,
+            percentage: this._percentage,
+            brouwerij: this._brouwerij.toJSON
+        }
     }
 
 }

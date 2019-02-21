@@ -22,4 +22,20 @@ export class Brouwerij {
     get datumOpgericht(): Date {
         return this._datumOpgericht
     }
+
+    static fromJSON(json: any): Brouwerij{
+        return new Brouwerij(
+            json.naam,
+            json.locatie,
+            new Date(json.datumOpgericht)
+        )
+    }
+
+    toJSON(){
+        return {
+            naam: this._naam,
+            locatie: this._locatie,
+            datumOpgericht: this._datumOpgericht.toString()
+        }
+    }
 }

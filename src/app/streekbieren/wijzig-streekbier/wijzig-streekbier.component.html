@@ -40,7 +40,7 @@
       <label for="brouwerij">Brouwerij: </label>
       <select class="ui fluid search selection dropdown" name="brouwerij" formControlName="brouwerij">
         <option disabled selected>-- Selecteer brouwerij --</option>
-        <option [selected]="brouwerij.naam == teWijzigenStreekbier.brouwerij.naam" *ngFor='let brouwerij of alleBrouwerijen'>{{brouwerij.naam}}</option> 
+        <option [selected]="brouwerij?.naam == teWijzigenStreekbier?.brouwerij.naam" *ngFor='let brouwerij of alleBrouwerijen'>{{brouwerij.naam}}</option> 
       </select>
     </div>
     <button type='submit' [disabled]="streekbier.invalid || streekbier.dirty === false"

@@ -28,22 +28,19 @@ export class WijzigStreekbierComponent implements OnInit {
     //lijst van alle brouwerijen ophalen uit mock-objects
     this.alleBrouwerijen = BROUWERIJEN
     let originalNaam = this.route.snapshot.paramMap.get('naam')
-    //this.teWijzigenStreekbier = this.dataService.streekbieren.find(bier => bier.naam === originalNaam)
-
     this.dataService.getStreekbier(originalNaam).subscribe(bier => {
       this.teWijzigenStreekbier = bier
-      this.buildForm()
+      this.fillForm()
     })
-
-    //naam uit route halen en streekbier opzoeken in dataservice
-    /*this.route.queryParams.subscribe(params => {
-      let originalNaam = params['naam']
-      this.teWijzigenStreekbier = this.dataService.streekbieren.find(bier => bier.naam === originalNaam)
-    })*/
     
+    this.streekbier = this.fb.group({
+      naam: ['', [Validators.required, Validators.minLength(3)]],
+      percentage: [0.0, [Validators.required, Validators.min(0), Validators.max(75)]],
+      brouwerij: []
+    })
   }
 
-  buildForm() {
+  fillForm() {
     this.streekbier = this.fb.group({
       naam: [this.teWijzigenStreekbier.naam, [Validators.required, Validators.minLength(3)]],
       percentage: [this.teWijzigenStreekbier.percentage, [Validators.required, Validators.min(0), Validators.max(75)]],
@@ -53,6 +50,7 @@ export class WijzigStreekbierComponent implements OnInit {
 
   onSubmit(){
     let newBrouwer: Brouwerij
+    let newBier: Streekbier
     this.dataService.getBrouwerij(this.streekbier.value.brouwerij).subscribe(brouwer => newBrouwer = brouwer)
     const changedBier = new Streekbier(
       this.streekbier.value.naam,
@@ -60,7 +58,6 @@ export class WijzigStreekbierComponent implements OnInit {
       newBrouwer
     )
     this.dataService.wijzigStreekbier(this.teWijzigenStreekbier.naam ,changedBier)
-    
     this.router.navigate(['streekbieren/lijst'])
   }
 }
