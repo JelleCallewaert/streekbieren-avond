@@ -7,10 +7,12 @@ import { WijzigStreekbierComponent } from './wijzig-streekbier/wijzig-streekbier
 import { RouterModule, Routes } from '@angular/router';
 import { StreekbierDataService } from './streekbier-data.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NieuwStreekbierComponent } from './nieuw-streekbier/nieuw-streekbier.component';
 
 const appRoutes: Routes = [
   { path: 'lijst', component: LijstStreekbierenComponent },
-  { path: 'wijzig/:naam', component: WijzigStreekbierComponent }
+  { path: 'wijzig/:naam', component: WijzigStreekbierComponent },
+  { path: 'nieuw', component: NieuwStreekbierComponent }
 ]
 
 @NgModule({
@@ -18,7 +20,7 @@ const appRoutes: Routes = [
     StreekbierComponent, 
     BrouwerijComponent, 
     LijstStreekbierenComponent, 
-    WijzigStreekbierComponent],
+    WijzigStreekbierComponent, NieuwStreekbierComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

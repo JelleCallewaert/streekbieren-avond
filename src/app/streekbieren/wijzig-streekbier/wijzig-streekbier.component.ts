@@ -14,6 +14,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class WijzigStreekbierComponent implements OnInit {
 
+  private readonly _header: string = "Wijzig Streekbier"
+  private readonly _button: string = "Streekbier Bewerken"
+
   private teWijzigenStreekbier: Streekbier
   public streekbier: FormGroup
   alleBrouwerijen: Brouwerij[]

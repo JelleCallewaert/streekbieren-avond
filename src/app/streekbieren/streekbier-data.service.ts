@@ -50,4 +50,8 @@ export class StreekbierDataService {
   verwijderStreekbier(naam: string) {
     return this.http.delete(`${this._url}/streekbieren/${naam}`)
   }
+
+  nieuwStreekbier(nieuwBier: Streekbier){
+    return this.http.post(`${this._url}/streekbieren`, nieuwBier)
+  }
 }
